@@ -1,11 +1,13 @@
 Character character;
-Level level;
+Level[] level= new Level[22];
+
+boolean right = false;
+
 void setup(){
  size(400,400);
  rectMode(CENTER);
  imageMode(CENTER);
  character= new Character();
- level= new Level();
  character.astro=loadImage("still.png");
  
  character.astroWalk = new PImage[4];
@@ -16,27 +18,33 @@ void setup(){
  
  character.astroJump = loadImage("jump2.png");
  
-  character.position= new PVector(100,250);
+  character.position= new PVector(100,character.yPos);
   character.velocity= new PVector(0,0);
   character.acceleration= new PVector(0,0.3);
   
+  for(int i=0; i<level.length; i++){
+    level[i]=new Level(random(20,320), random(20,320), random(20,30), random(20,30));
+  }
 }
 
 void draw(){
   background(0);
   
   character.movement();
-  level.ground();
-  
-  if(level.right == true){
-   level.xax=level.xax-2;
+  if(right == true){
+    for(int i=0; i< level.length; i++){
+   level[i].xPos=level[i].xPos-2;
+    }
   }
-}
+  for(int i=0; i<level.length; i++){
+   level[i].plat();
+  }
+  }
 
 void keyPressed(){
   if(key=='d'){
  character.isWalking=true; 
- level.right=true;
+ right=true;
   }
   
   if(key=='w'){
@@ -47,6 +55,6 @@ void keyPressed(){
 void keyReleased(){
  if(key=='d'){
  character.isWalking=false; 
- level.right=false;
+ right=false;
  }
 }

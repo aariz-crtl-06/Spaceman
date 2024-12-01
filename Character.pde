@@ -8,6 +8,7 @@ int astroFrame;
 PVector position;
 PVector velocity;
 PVector acceleration;
+int yPos = 250;
 
 Character(){
  isWalking=false;
@@ -26,7 +27,7 @@ void movement(){
     velocity.add(acceleration);
     position.add(velocity);
     
-    if(position.y >= 250){
+    if(position.y >= yPos){
       position.y=250;
       isJumping=false;
       velocity.set(0,0);

@@ -1,16 +1,18 @@
 class Level{
-  float yax=0;
-  float xax=0;
-  boolean right = false;
-  void ground() {
-    stroke(255);
-   line(0,290,900,290); 
-    rect(xax+800, 200, 30,30);
+  float xPos=0;
+  float yPos=0;
+  float xSize=0;
+  float ySize=0;
+  
+  Level(float tempXpos, float tempYpos, float tempXsize, float tempYsize){
+    xPos=tempXpos;
+    yPos=tempYpos;
+    xSize=tempXsize;
+    ySize=tempYsize;
+  }
+  void plat() {
+    stroke(255); 
+    rect(xPos+800, yPos, xSize,ySize);
+    }
     
   }
-  
-  
-  
-  
-  
-}
