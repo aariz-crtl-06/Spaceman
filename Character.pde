@@ -26,8 +26,8 @@ void movement(){
     velocity.add(acceleration);
     position.add(velocity);
     
-    if(position.y >= 300){
-      position.y=300;
+    if(position.y >= 250){
+      position.y=250;
       isJumping=false;
       velocity.set(0,0);
     }

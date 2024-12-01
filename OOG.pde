@@ -15,9 +15,9 @@ void setup(){
  
  character.astroJump = loadImage("jump2.png");
  
-  character.position= new PVector(100,300);
+  character.position= new PVector(100,250);
   character.velocity= new PVector(0,0);
-  character.acceleration= new PVector(0,0.5);
+  character.acceleration= new PVector(0,0.3);
 }
 
 void draw(){
