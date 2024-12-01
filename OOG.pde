@@ -13,12 +13,9 @@ void setup(){
  character.astroWalk[2] = loadImage("walk3.png");
  character.astroWalk[3] = loadImage("walk4.png");
  
- character.astroJump = new PImage[3];
- character.astroJump[0] = loadImage("jump1.png");
- character.astroJump[1] = loadImage("jump2.png");
- character.astroJump[2] = loadImage("jump3.png");
+ character.astroJump = loadImage("jump2.png");
  
-  character.position= new PVector(100,250);
+  character.position= new PVector(100,300);
   character.velocity= new PVector(0,0);
   character.acceleration= new PVector(0,0.5);
 }
@@ -35,12 +32,12 @@ void keyPressed(){
   }
   
   if(key=='w'){
- character.isJumping=true; 
+ character.jump(); 
   }
 }
 
 void keyReleased(){
+ if(key=='d'){
  character.isWalking=false; 
- character.isJumping=false; 
-  
+ }
 }
