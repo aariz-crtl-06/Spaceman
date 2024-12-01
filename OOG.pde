@@ -1,10 +1,11 @@
 Character character;
-
+Level level;
 void setup(){
  size(400,400);
  rectMode(CENTER);
  imageMode(CENTER);
  character= new Character();
+ level= new Level();
  character.astro=loadImage("still.png");
  
  character.astroWalk = new PImage[4];
@@ -18,17 +19,24 @@ void setup(){
   character.position= new PVector(100,250);
   character.velocity= new PVector(0,0);
   character.acceleration= new PVector(0,0.3);
+  
 }
 
 void draw(){
   background(0);
   
   character.movement();
+  level.ground();
+  
+  if(level.right == true){
+   level.xax=level.xax-2;
+  }
 }
 
 void keyPressed(){
   if(key=='d'){
  character.isWalking=true; 
+ level.right=true;
   }
   
   if(key=='w'){
@@ -39,5 +47,6 @@ void keyPressed(){
 void keyReleased(){
  if(key=='d'){
  character.isWalking=false; 
+ level.right=false;
  }
 }
