@@ -17,23 +17,16 @@ void setup(){
  character.astroJump[0] = loadImage("jump1.png");
  character.astroJump[1] = loadImage("jump2.png");
  character.astroJump[2] = loadImage("jump3.png");
-  
+ 
+  character.position= new PVector(100,250);
+  character.velocity= new PVector(0,0);
+  character.acceleration= new PVector(0,0.5);
 }
 
 void draw(){
   background(0);
   
-  if(frameCount % 12 == 0){
-    character.astroFrame=(character.astroFrame + 1) % character.astroWalk.length;
-  }
-  pushMatrix();
-  translate(character.position.x, character.position.y);
-  if (character.isWalking) {
-    image(character.astroWalk[character.astroFrame], 0, 0);
-  } else {
-    image(character.astro, 0, 0);
-  }
-  popMatrix();
+  character.movement();
 }
 
 void keyPressed(){
