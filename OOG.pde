@@ -22,11 +22,11 @@ void setup(){
   character.velocity= new PVector(0,0);
   character.acceleration= new PVector(0,accel);
 
-  level[0] = new Level(300, 250, 100, 20);
+  level[0] = new Level(320, 260, 100, 20);
   level[1] = new Level(500, 200, 100, 20);
-  level[2] = new Level(700, 150, 80, 20);
-  level[3] = new Level(900, 120, 100, 20);
-  level[4] = new Level(1100, 120, 100, 20);
+  level[2] = new Level(650, 150, 80, 20);
+  level[3] = new Level(850, 120, 100, 20);
+  level[4] = new Level(1050, 200, 100, 20);
 }
 
 void draw(){
@@ -47,7 +47,7 @@ void draw(){
     }
   }
   stroke(255);
-  line(0,290,5000,290);
+  line(0,330,5000,290);
   }
 
 void keyPressed(){

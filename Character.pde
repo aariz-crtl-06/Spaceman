@@ -9,7 +9,7 @@ int astroFrame;
 PVector position;
 PVector velocity;
 PVector acceleration;
-int yPos = 250;
+int yPos = 290;
 
 Character(){
  isWalking=false;
@@ -30,8 +30,8 @@ void movement(){
   for(int i=0; i<level.length; i++){
    if(level[i] !=null){
     Level plt = level[i];
-    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y + 54 >= plt.yPos - plt.ySize / 2 && position.y <= plt.yPos + plt.ySize / 2) {
-      position.y=plt.yPos+plt.ySize/2;
+    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y + 62 >= plt.yPos - plt.ySize / 2 && position.y <= plt.yPos + plt.ySize / 2) {
+      position.y=plt.yPos-50;
       onPlatform=true;
       isJumping=false;
       velocity.y=0;
