@@ -12,7 +12,7 @@ class Level{
   }
   void plat() {
     stroke(255); 
-    rect(xPos+800, yPos, xSize,ySize);
+    rect(xPos, yPos, xSize,ySize);
     }
     
   }

@@ -4,6 +4,7 @@ PImage astroWalk[];
 PImage astroJump;
 boolean isWalking;
 boolean isJumping;
+boolean onPlatform=false;
 int astroFrame;
 PVector position;
 PVector velocity;
@@ -23,6 +24,25 @@ void jump(){
  }
 }
 void movement(){
+  
+ 
+  
+  for(int i=0; i<level.length; i++){
+   if(level[i] !=null){
+    Level plt = level[i];
+    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y + 44 >= plt.yPos - plt.ySize / 2 && position.y <= plt.yPos + plt.ySize / 2) {
+      yPos = (int)(plt.yPos - plt.ySize/2);
+      onPlatform=true;
+      isJumping=false;
+      velocity.y=0;
+   }
+  }
+  }
+  
+  if(!onPlatform){
+   yPos=250; 
+  }
+  
   if(isJumping){
     velocity.add(acceleration);
     position.add(velocity);
