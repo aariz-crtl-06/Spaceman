@@ -8,7 +8,10 @@ class Spikes{
     yPos=tempYpos;
   }
   void tri(){
-    fill(0);
+    noStroke();
+    fill(245,129,27);
+    stroke(255,0,0);
+    fill(255,light2,5);
     triangle(xPos, yPos, xPos +sWidth/2, yPos-sHeight, xPos+sWidth,yPos);
   }
   

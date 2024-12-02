@@ -1,4 +1,5 @@
 float light=0;
+float light2=0;
 Character character;
 Level[] level= new Level[10];
 Spikes[] spikes= new Spikes[100];
@@ -43,6 +44,7 @@ void setup(){
 void draw(){
   background(0);
   light=(random(10,250));
+  light2=(random(140,250));
   
   character.movement();
   
