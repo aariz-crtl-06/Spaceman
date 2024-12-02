@@ -24,20 +24,22 @@ void jump(){
  }
 }
 void movement(){
-  onPlatform=false;
+  boolean firstOnPlatform=false;
  
   
   for(int i=0; i<level.length; i++){
    if(level[i] !=null){
     Level plt = level[i];
-    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y + 62 >= plt.yPos - plt.ySize / 2 && position.y <= plt.yPos + plt.ySize / 2) {
-      position.y=plt.yPos-50;
-      onPlatform=true;
-      isJumping=false;
+    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y +39.4 >= plt.yPos - plt.ySize / 2 && position.y + 22 < plt.yPos) {
+      position.y=plt.yPos-49.5;
+      firstOnPlatform=true;
       velocity.y=0;
+      break;
    }
   }
   }
+  
+  onPlatform=firstOnPlatform;
   
   if(!onPlatform){
    velocity.add(acceleration);
@@ -46,9 +48,18 @@ void movement(){
     if(position.y >= yPos){
       position.y=yPos;
       isJumping=false;
-      velocity.set(0,0);
+      velocity.y=0;
     }
+  } 
+  
+  if(onPlatform==true){
+   isJumping=velocity.y<0; 
   }
+  
+  if(isWalking){
+   position.x=position.x+0.1;
+  }
+  
   if(frameCount % 12 == 0){
   if (isWalking){
     astroFrame=(astroFrame + 1) % astroWalk.length;
