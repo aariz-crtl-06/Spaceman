@@ -30,7 +30,7 @@ void movement(){
   for(int i=0; i<level.length; i++){
    if(level[i] !=null){
     Level plt = level[i];
-    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y +39.4 >= plt.yPos - plt.ySize / 2 && position.y + 22 < plt.yPos) {
+    if(position.x > plt.xPos - 100 / 2 && position.x < plt.xPos + 100 / 2 && position.y +39.3 >= plt.yPos - 20 / 2 && position.y + 20 < plt.yPos) {
       position.y=plt.yPos-49.5;
       firstOnPlatform=true;
       velocity.y=0;
@@ -57,7 +57,7 @@ void movement(){
   }
   
   if(isWalking){
-   position.x=position.x+0.1;
+   position.x=position.x+0.3;
   }
   
   if(frameCount % 12 == 0){

@@ -1,8 +1,14 @@
+float light=0;
 Character character;
 Level[] level= new Level[10];
+Spikes[] spikes= new Spikes[100];
 
 boolean right = false;
 float accel = 0.3;
+
+ float triangleWidth = 20;
+ float triangleHeight = 30;
+
 void setup(){
  size(400,400);
  rectMode(CENTER);
@@ -22,23 +28,39 @@ void setup(){
   character.velocity= new PVector(0,0);
   character.acceleration= new PVector(0,accel);
 
-  level[0] = new Level(320, 260, 100, 20);
-  level[1] = new Level(500, 200, 100, 20);
-  level[2] = new Level(650, 150, 80, 20);
-  level[3] = new Level(850, 120, 100, 20);
-  level[4] = new Level(1050, 200, 100, 20);
+  level[0] = new Level(320, 260);
+  level[1] = new Level(500, 200);
+  level[2] = new Level(650, 150);
+  level[3] = new Level(850, 120);
+  level[4] = new Level(1050, 200);
+  level[5] = new Level(1250, 270);
+  
+  for(int i=0; i<spikes.length; i++){
+   spikes[i]=new Spikes(300+i*20, height - 70); 
+  }
 }
 
 void draw(){
   background(0);
+  light=(random(10,250));
   
   character.movement();
+  
   if(right == true){
     for(int i=0; i< level.length; i++){
       if(level[i] !=null){
    level[i].xPos=level[i].xPos-2;
       }
     }
+    
+    for(int i=0; i< spikes.length; i++){
+      if(spikes[i] !=null){
+   spikes[i].xPos=spikes[i].xPos-2;
+      }
+    }
+  }
+  for(int i=0; i<spikes.length; i++){
+   spikes[i].tri(); 
   }
  
   for(int i=0; i<level.length; i++){
@@ -47,7 +69,9 @@ void draw(){
     }
   }
   stroke(255);
-  line(0,330,5000,290);
+  line(0,330,3000,330);
+  
+
   }
 
 void keyPressed(){
