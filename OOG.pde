@@ -2,7 +2,7 @@ Character character;
 Level[] level= new Level[10];
 
 boolean right = false;
-
+float accel = 0.3;
 void setup(){
  size(400,400);
  rectMode(CENTER);
@@ -20,13 +20,13 @@ void setup(){
  
   character.position= new PVector(100,character.yPos);
   character.velocity= new PVector(0,0);
-  character.acceleration= new PVector(0,0.3);
+  character.acceleration= new PVector(0,accel);
 
   level[0] = new Level(300, 250, 100, 20);
   level[1] = new Level(500, 200, 100, 20);
   level[2] = new Level(700, 150, 80, 20);
-  level[3] = new Level(1000, 220, 100, 20);
-  level[4] = new Level(1200, 260, 100, 20);
+  level[3] = new Level(900, 120, 100, 20);
+  level[4] = new Level(1100, 120, 100, 20);
 }
 
 void draw(){

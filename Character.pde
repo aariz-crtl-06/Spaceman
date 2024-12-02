@@ -20,18 +20,18 @@ Character(){
 void jump(){
  if(!isJumping){
    isJumping=true;
-   velocity.y=-10;
+   velocity.y=-8;
  }
 }
 void movement(){
-  
+  onPlatform=false;
  
   
   for(int i=0; i<level.length; i++){
    if(level[i] !=null){
     Level plt = level[i];
-    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y + 44 >= plt.yPos - plt.ySize / 2 && position.y <= plt.yPos + plt.ySize / 2) {
-      yPos = (int)(plt.yPos - plt.ySize/2);
+    if(position.x > plt.xPos - plt.xSize / 2 && position.x < plt.xPos + plt.xSize / 2 && position.y + 54 >= plt.yPos - plt.ySize / 2 && position.y <= plt.yPos + plt.ySize / 2) {
+      position.y=plt.yPos+plt.ySize/2;
       onPlatform=true;
       isJumping=false;
       velocity.y=0;
@@ -40,15 +40,11 @@ void movement(){
   }
   
   if(!onPlatform){
-   yPos=250; 
-  }
-  
-  if(isJumping){
-    velocity.add(acceleration);
-    position.add(velocity);
+   velocity.add(acceleration);
+   position.add(velocity);
     
     if(position.y >= yPos){
-      position.y=250;
+      position.y=yPos;
       isJumping=false;
       velocity.set(0,0);
     }
