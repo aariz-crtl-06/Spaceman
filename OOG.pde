@@ -10,6 +10,8 @@ float accel = 0.3;
  float triangleWidth = 20;
  float triangleHeight = 30;
 
+  int gameOver=0;
+
 void setup(){
  size(400,400);
  rectMode(CENTER);
@@ -42,6 +44,15 @@ void setup(){
 }
 
 void draw(){
+  
+  if (gameOver == 1) {
+        background(0);
+        textSize(32);
+        fill(255);
+        text("Game Over!!!", width / 2 - 100, height / 2);
+        noLoop();
+        return;
+  }
   background(0);
   light=(random(10,250));
   light2=(random(140,250));
@@ -73,7 +84,9 @@ void draw(){
   stroke(255);
   line(0,330,3000,330);
   
-
+  if (character.position.x > 127 && character.position.y >= 280) {
+        gameOver = 1;
+  }
   }
 
 void keyPressed(){
