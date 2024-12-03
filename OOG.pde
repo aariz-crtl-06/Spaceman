@@ -4,6 +4,10 @@ Character character;
 Level[] level= new Level[10];
 Spikes[] spikes= new Spikes[100];
 
+PImage space;
+PImage failed;
+PImage success;
+PImage proceed;
 PImage portal[];
 int portalFrame;
 
@@ -27,6 +31,11 @@ void setup(){
  imageMode(CENTER);
  character= new Character();
  character.astro=loadImage("still.png");
+ space=loadImage("space.jpg");
+ 
+ failed=loadImage("failed.png");
+ success=loadImage("success.png");
+ proceed=loadImage("proceed.png");
  
  character.astroWalk = new PImage[4];
  character.astroWalk[0] = loadImage("walk1.png");
@@ -97,23 +106,23 @@ void draw(){
   
   if (gameOver == 1) {
         background(0);
-        textSize(22);
-        fill(255);
-        text("Game Over!!!   Press 'o' to Restart", width / 2 - 150, height / 2);
+        image(failed,200,200,290,30);
+        image(proceed,200,300,290,30);
         noLoop();
         return;
   }
   
   if (gameWon == 1) {
         background(0);
-        textSize(22);
-        fill(255);
-        text("Misson Success - Press 'o' to Restart", width / 2 - 150, height / 2);
+        image(success,200,200,290,30);
+        image(proceed,200,300,290,30);
         noLoop();
         return;
   }
-  
-  background(0);
+  stroke(255);
+  background(164,125,99);
+  noStroke();
+  image(space,200,165,600,330);
   light=(random(10,250));
   light2=(random(140,250));
   
