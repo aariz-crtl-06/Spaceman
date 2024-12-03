@@ -86,11 +86,14 @@ void movement(){
   pushMatrix();
   translate(position.x, position.y);
   if (isJumping){
+    //Makes jump animation play when character jumps
    image(astroJump,0,0); 
   }
   else if (isWalking) {
+    //Makes the animation cycle play while running only
     image(astroWalk[astroFrame], 0, 0);
   } else {
+    //When not running or jumping, character standing still image displays
     image(astro, 0, 0);
   }
   popMatrix();

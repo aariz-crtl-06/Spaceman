@@ -140,6 +140,7 @@ void restartGame(){
 }
 
 void draw(){
+  println(character.isJumping);
   //Sets the portal value to be at platform 9
   portalX=level[9].xPos;
   portalY=level[9].yPos;

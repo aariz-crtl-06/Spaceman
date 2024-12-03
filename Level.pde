@@ -1,10 +1,13 @@
+//Class for the various platforms
 class Level{
   float xPos=0;
   float yPos=0;
+  //Class object allows for x and y location values to be different for each platform
   Level(float tempXpos, float tempYpos){
     xPos=tempXpos;
     yPos=tempYpos;
   }
+  //Draws the platform
   void plat() {
     stroke(255);
     fill(201,208,214);

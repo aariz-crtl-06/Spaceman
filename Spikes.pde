@@ -1,3 +1,4 @@
+//Class for the spikes to kill player
 class Spikes{
   float xPos=0;
   float yPos=0;
@@ -7,6 +8,7 @@ class Spikes{
     xPos=tempXpos;
     yPos=tempYpos;
   }
+  //Draws the spikes
   void tri(){
     noStroke();
     fill(245,129,27);
