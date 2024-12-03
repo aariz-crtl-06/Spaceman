@@ -4,6 +4,12 @@ Character character;
 Level[] level= new Level[10];
 Spikes[] spikes= new Spikes[100];
 
+PImage portal[];
+int portalFrame;
+
+float portalX;
+float portalY;
+
 boolean right = false;
 float accel = 0.3;
 
@@ -28,6 +34,13 @@ void setup(){
  
  character.astroJump = loadImage("jump2.png");
  
+ portal=new PImage[4];
+for(int i=0; i<portal.length; i++){
+ portal[i]= loadImage("port"+(i+1)+".png");
+}
+ 
+ 
+ 
   character.position= new PVector(100,character.yPos);
   character.velocity= new PVector(0,0);
   character.acceleration= new PVector(0,accel);
@@ -38,6 +51,10 @@ void setup(){
   level[3] = new Level(850, 120);
   level[4] = new Level(1050, 200);
   level[5] = new Level(1250, 270);
+  level[6] = new Level(1400, 170);
+  level[7] = new Level(1500, 260);
+  level[8] = new Level(1650, 170);
+  level[9] = new Level(1800, 200);
   
   for(int i=0; i<spikes.length; i++){
    spikes[i]=new Spikes(300+i*20, height - 70); 
@@ -57,6 +74,10 @@ void restartGame(){
   level[3] = new Level(850, 120);
   level[4] = new Level(1050, 200);
   level[5] = new Level(1250, 270);
+  level[6] = new Level(1400, 170);
+  level[7] = new Level(1500, 260);
+  level[8] = new Level(1650, 170);
+  level[9] = new Level(1800, 200);
 
   gameOver=0;
     
@@ -67,6 +88,9 @@ void restartGame(){
 }
 
 void draw(){
+  
+  portalX=level[9].xPos;
+  portalY=level[9].yPos;
   
   if (gameOver == 1) {
         background(0);
@@ -79,6 +103,8 @@ void draw(){
   background(0);
   light=(random(10,250));
   light2=(random(140,250));
+  
+  image(portal[portalFrame],portalX+50,portalY-60, 100,100);
   
   character.movement();
   
@@ -110,6 +136,11 @@ void draw(){
   if (character.position.x > 127 && character.position.y >= 280) {
         gameOver = 1;
   }
+  
+  if(frameCount % 12==0){
+   portalFrame=(portalFrame+1)%portal.length;
+  }
+  
   }
 
 void keyPressed(){
