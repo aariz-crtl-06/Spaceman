@@ -1,3 +1,9 @@
+import processing.sound.*;
+SoundFile bgm;
+SoundFile jump;
+SoundFile win;
+SoundFile death;
+SoundFile core;
 float light=0;
 float light2=0;
 Character character;
@@ -27,6 +33,12 @@ float accel = 0.3;
 
 void setup(){
  size(400,400);
+ 
+ bgm=new SoundFile(this, "spaceTheme.wav");
+ jump=new SoundFile(this, "jump.wav");
+ win=new SoundFile(this, "win.wav");
+ death=new SoundFile(this, "death.wav");
+ core=new SoundFile(this, "core.wav");
  rectMode(CENTER);
  imageMode(CENTER);
  character= new Character();
@@ -97,14 +109,17 @@ void restartGame(){
  spikes[i] = new Spikes(300 + i * 20, height - 70);
   loop();
     }
+    if(!bgm.isPlaying()){
+    bgm.loop();
+    }
 }
 
 void draw(){
-  
   portalX=level[9].xPos;
   portalY=level[9].yPos;
   
   if (gameOver == 1) {
+    death.play();
         background(0);
         image(failed,200,200,290,30);
         image(proceed,200,300,290,30);
@@ -113,6 +128,7 @@ void draw(){
   }
   
   if (gameWon == 1) {
+    win.play();
         background(0);
         image(success,200,200,290,30);
         image(proceed,200,300,290,30);
@@ -152,6 +168,12 @@ void draw(){
    level[i].plat();
     }
   }
+  
+  if(character.position.x>200 && character.position.x<201){
+   if(!core.isPlaying()){   
+    core.play();
+  }
+}
   stroke(255);
   line(0,330,3000,330);
   
@@ -177,6 +199,10 @@ void keyPressed(){
   
   if(key=='w'){
  character.jump(); 
+ if(!jump.isPlaying()){
+ jump.play();
+  jump.amp(2.0);
+  }
   }
   
   if(key=='o' && gameOver==1){
