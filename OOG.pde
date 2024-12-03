@@ -17,7 +17,9 @@ float accel = 0.3;
  float triangleHeight = 30;
 
   int gameOver=0;
+  int gameWon=0;
   int reset=0;
+  int resetWin=0;
 
 void setup(){
  size(400,400);
@@ -80,6 +82,7 @@ void restartGame(){
   level[9] = new Level(1800, 200);
 
   gameOver=0;
+  gameWon=0;
     
  for (int i = 0; i < spikes.length; i++) {
  spikes[i] = new Spikes(300 + i * 20, height - 70);
@@ -100,6 +103,16 @@ void draw(){
         noLoop();
         return;
   }
+  
+  if (gameWon == 1) {
+        background(0);
+        textSize(22);
+        fill(255);
+        text("Misson Success - Press 'o' to Restart", width / 2 - 150, height / 2);
+        noLoop();
+        return;
+  }
+  
   background(0);
   light=(random(10,250));
   light2=(random(140,250));
@@ -137,6 +150,10 @@ void draw(){
         gameOver = 1;
   }
   
+  if (character.position.x > 328 && character.position.y < 280) {
+        gameWon = 1;
+  }
+  
   if(frameCount % 12==0){
    portalFrame=(portalFrame+1)%portal.length;
   }
@@ -154,6 +171,10 @@ void keyPressed(){
   }
   
   if(key=='o' && gameOver==1){
+   restartGame(); 
+  }
+  
+   if(key=='o' && gameWon==1){
    restartGame(); 
   }
 }
