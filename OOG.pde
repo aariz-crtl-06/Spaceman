@@ -11,6 +11,7 @@ float accel = 0.3;
  float triangleHeight = 30;
 
   int gameOver=0;
+  int reset=0;
 
 void setup(){
  size(400,400);
@@ -41,15 +42,37 @@ void setup(){
   for(int i=0; i<spikes.length; i++){
    spikes[i]=new Spikes(300+i*20, height - 70); 
   }
+  restartGame();
+}
+
+
+void restartGame(){
+  character.position = new PVector(100, character.yPos);
+  character.velocity = new PVector(0, 0);
+  character.acceleration = new PVector(0, accel);
+  
+  level[0] = new Level(320, 260);
+  level[1] = new Level(500, 200);
+  level[2] = new Level(650, 150);
+  level[3] = new Level(850, 120);
+  level[4] = new Level(1050, 200);
+  level[5] = new Level(1250, 270);
+
+  gameOver=0;
+    
+ for (int i = 0; i < spikes.length; i++) {
+ spikes[i] = new Spikes(300 + i * 20, height - 70);
+  loop();
+    }
 }
 
 void draw(){
   
   if (gameOver == 1) {
         background(0);
-        textSize(32);
+        textSize(22);
         fill(255);
-        text("Game Over!!!", width / 2 - 100, height / 2);
+        text("Game Over!!!   Press 'o' to Restart", width / 2 - 150, height / 2);
         noLoop();
         return;
   }
@@ -97,6 +120,10 @@ void keyPressed(){
   
   if(key=='w'){
  character.jump(); 
+  }
+  
+  if(key=='o' && gameOver==1){
+   restartGame(); 
   }
 }
 
