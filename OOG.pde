@@ -4,6 +4,18 @@
 //But the portal is on the other side of magma powered flooring that kills intstantly...
 //Goodluck!
 
+//Astronaut spritesheet by Gogoat1 on Deviant Art: https://www.deviantart.com/gogoat1/art/spaceX-Astronaut-spritesheet-954691698
+//Portal Sprite animation by Grappe on itch.io:  https://grappe.itch.io/
+//Pixel Space background art by Paper Den: https://wallpapersden.com/artistic-pixel-art-hd-space-wallpaper/
+
+
+//Nuclear core meltdown by thedavidvittorio25: https://youtu.be/Bw95FS14nb8?si=fcJ1syycSJosDhZF
+//Death sound by Noise Top: https://youtu.be/vCp95zQ-MCk?si=sZSkSMAZHoNh6Ghb
+//Portal sound by Gladys Silvana:  https://youtu.be/SCuhFiDrHOE?feature=shared
+//Jump sound by iggchan: https://youtu.be/phE5HLWh0IY?si=QZdcTfCBhiWFR_-n
+//(A Theme For Space) music by Charlie Axl Tebbutt: https://youtu.be/9aKIkh4gfqs?si=qJLb2y964f4RHIgk
+
+
 //Allows for sound library to work within code
 import processing.sound.*;
 //Creates a way to utilize sound files
@@ -140,7 +152,6 @@ void restartGame(){
 }
 
 void draw(){
-  println(character.isJumping);
   //Sets the portal value to be at platform 9
   portalX=level[9].xPos;
   portalY=level[9].yPos;
